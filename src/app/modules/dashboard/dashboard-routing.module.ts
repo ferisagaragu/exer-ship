@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ListUsersComponent } from './list-users/list-users.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./modules/modules.module').then(m => m.ModulesModule)
+    component: ListUsersComponent
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class DashboardRoutingModule { }
