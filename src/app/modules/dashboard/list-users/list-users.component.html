@@ -1,14 +1,79 @@
-<div class="row">
-  <div *ngIf="!usersList">Cargando pareja</div>
+<div *ngIf="!usersList">Cargando pareja</div>
 
-  <div *ngIf="usersList">
-    <div 
-      class="card"
-      *ngFor="let user of usersList"
+<div class="row" *ngIf="usersList">
+  <div 
+    class="card col-md-12 p-4 mt-3"
+    *ngFor="let user of usersList"
+  >
+    <label>{{ user.name }}</label>
+    <mat-progress-bar 
+      mode="determinate" 
+      [value]="user.progress"
     >
-      <label>{{ user.name }}</label>
-      <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+    </mat-progress-bar>
+
+    <div class="mt-3 text-right">
+      <button
+        class="mr-2"
+        mat-stroked-button 
+        color="accent"
+        [disabled]="enableDay !== 0"
+      >
+        Dom
+      </button>
+
+      <button
+        class="mr-2"
+        mat-stroked-button 
+        color="accent"
+        [disabled]="enableDay !== 1"
+      >
+        Lun
+      </button>
+
+      <button
+        class="mr-2" 
+        mat-stroked-button 
+        color="accent"
+        [disabled]="enableDay !== 2"
+      >
+        Mar
+      </button>
+
+      <button
+        class="mr-2" 
+        mat-stroked-button 
+        color="accent"
+        [disabled]="enableDay !== 3"
+      >
+        Mie
+      </button>
+
+      <button
+        class="mr-2" 
+        mat-stroked-button 
+        color="accent"
+        [disabled]="enableDay !== 4"
+      >
+        Jue
+      </button>
+
+      <button
+        class="mr-2" 
+        mat-stroked-button 
+        color="accent"
+        [disabled]="enableDay !== 5"
+      >
+        Vie
+      </button>
+      
+      <button
+        mat-stroked-button 
+        color="primary"
+        [disabled]="enableDay !== 6"
+      >
+        Sab
+      </button>
     </div>
   </div>
-
 </div>

@@ -10,8 +10,11 @@ import { UserModel } from '../../../core/model/user.model';
 export class ListUsersComponent implements OnInit {
 
   usersList: Array<UserModel>;
+  enableDay: number;
 
-  constructor(private userService: UsersService) { }
+  constructor(private userService: UsersService) { 
+    this.enableDay = new Date().getDay();
+  }
 
   ngOnInit(): void {
     this.userService.findAllUsers().subscribe((resp) => {
