@@ -1,0 +1,28 @@
+{
+  "users": {
+    "c196f69e-e5d1-11ea-adc1-0242ac120002": {
+      "name": "Alejandra"
+    },
+    "e5d7f3be-e5d1-11ea-adc1-0242ac120002": {
+      "name": "Fernando"
+    }
+  },
+  "ships": {
+    "afe4a662-e5d1-11ea-adc1-0242ac120002": {
+      "team": [
+        "c196f69e-e5d1-11ea-adc1-0242ac120002",
+        "e5d7f3be-e5d1-11ea-adc1-0242ac120002"
+      ],
+      "process": 0,
+      "weeks": {
+        "0": [
+          {
+            "c196f69e-e5d1-11ea-adc1-0242ac120002": {
+              
+            }
+          }
+        ]
+      }
+    }
+  } 
+}

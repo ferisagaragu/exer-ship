@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "electron": "electron",
-    "start": "npm-run-all --parallel \"electron src/index.js\" \"ng serve\"",
+    "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

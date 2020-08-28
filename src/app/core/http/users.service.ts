@@ -15,6 +15,16 @@ export class UsersService {
       .pipe(map((resp: any) => this.convertUser(resp)));
   }
 
+  saveProgress(data: any) {
+    const id = data.id;
+    delete data.id;
+    return this.http.put(
+      `https://exer-ship.firebaseio.com/users/${id}.json`, {
+        ...data
+      }
+    )
+  }
+
   private convertUser(user: any): Array<UserModel> {
     const out = [];
 
