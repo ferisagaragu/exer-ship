@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BASE_ROUTES } from '../core/routes/base.routes';
-import { HERO_ROUTES } from '../core/routes/hero.routes';
+import { AUTHORIZATION_ROUTING } from '../core/routes/authorization.routes';
 
 
 const routes: Routes = [
   ...BASE_ROUTES,
-  ...HERO_ROUTES
+  ...AUTHORIZATION_ROUTING
 ];
 
 @NgModule({

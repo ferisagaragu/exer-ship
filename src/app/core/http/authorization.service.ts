@@ -2,13 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
 import { UserModel } from '../model/user.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UsersService {
+export class AuthorizationService {
 
   constructor(private http: HttpClient) { }
+
+  logIn(user: any): Observable<any> {
+    return this.http.post('http://localhost:5000/auth/sign-in', user)
+  }
+
 
   findAllUsers() {
     return this.http.get('https://exer-ship.firebaseio.com/users.json')
