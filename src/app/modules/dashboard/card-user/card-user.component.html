@@ -1,0 +1,90 @@
+<div class="card p-3 mt-5">
+  <div class="trophy-container"></div>
+  <div class="layer"></div>
+
+  <strong
+    *ngIf="percentage < 100"
+    class="mdi mdi-star-half medal"
+    title="La estrella completa se mostrara, hasta que logres el 100% de la semana"
+    [style]="{ color: color }"
+  >
+  </strong>
+
+  <strong
+    *ngIf="percentage == 100"
+    class="mdi mdi-star medal"
+    title="Felicidades, una estrella para alguien genial y dedicado como tu"
+    [style]="{ color: color }"
+  >
+  </strong>
+
+  <h2>{{ userName }}</h2>
+
+  <app-bar-exercise
+    [src]="src"
+    [name]="userName"
+    [color]="color"
+    [percentage]="percentage"
+  >
+  </app-bar-exercise>
+
+  <div class="w-100 text-center">
+    <button
+      class="mr-2 mt-2"
+      mat-stroked-button
+      color="warn"
+      [disabled]="toDay !== 0"
+    >
+      Domingo
+    </button>
+
+    <button
+      class="mr-2 mt-2"
+      mat-stroked-button
+      [disabled]="toDay !== 1"
+    >
+      Lunes
+    </button>
+
+    <button
+      class="mr-2 mt-2"
+      mat-stroked-button
+      [disabled]="toDay !== 2"
+    >
+      Martes
+    </button>
+
+    <button
+      class="mr-2 mt-2"
+      mat-stroked-button
+      [disabled]="toDay !== 3"
+    >
+      Miércoles
+    </button>
+
+    <button
+      class="mr-2 mt-2"
+      mat-stroked-button
+      [disabled]="toDay !== 4"
+    >
+      Jueves
+    </button>
+
+    <button
+      class="mr-2 mt-2"
+      mat-stroked-button
+      [disabled]="toDay !== 5"
+    >
+      Viernes
+    </button>
+
+    <button
+      class="mt-2"
+      mat-stroked-button
+      color="primary"
+      [disabled]="toDay !== 6"
+    >
+      Sábado
+    </button>
+  </div>
+</div>

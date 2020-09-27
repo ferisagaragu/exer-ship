@@ -1,0 +1,44 @@
+<div class="aligner">
+  <div class="aligner-center animate__animated animate__backInDown">
+    <form class="card card-size p-4" [formGroup]="form" (submit)="onSubmit()">
+      <div class="text-center" [inlineSVG]="'../../assets/svg/healthy-more.svg'"></div>
+
+      <mat-form-field class="mt-2" appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input form matInput formControlName="name">
+        <mat-error>El nombre es requerido</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="mt-2" appearance="outline">
+        <mat-label>Nombre de usuario</mat-label>
+        <input form matInput formControlName="userName">
+        <mat-error>El nombre de usuario es requerido</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="mt-2" appearance="outline">
+        <mat-label>Correo electrónico</mat-label>
+        <input form matInput formControlName="email">
+        <mat-error>El correo electrónico es requerido</mat-error>
+      </mat-form-field>
+
+      <div class="text-center mt-3">
+        <button
+          class="mr-3"
+          mat-stroked-button
+          color="accent"
+          type="button"
+          [routerLink]="['/']"
+        >
+          Regresar
+        </button>
+
+        <button
+          mat-stroked-button
+          color="primary"
+        >
+          Regístrame
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

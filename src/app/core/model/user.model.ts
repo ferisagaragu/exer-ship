@@ -1,8 +1,12 @@
+import { DayModel } from './day.model';
+
 export class UserModel {
 
+  uid: string;
   name: string;
-  color: string;
-  progress: number;
+  lastName: string;
+  userName: string;
+  email: string;
 
   constructor(data: UserModel | any) {
     Object.assign(this, data);

@@ -1,0 +1,37 @@
+.bar-exercise {
+  padding-top: 15px;
+  padding-bottom: 20px;
+  width: 100%;
+  background: none;
+}
+
+.bar {
+  width: 15%;
+  height: 100%;
+  background: black;
+  text-align: right;
+}
+
+.avatar {
+  margin-top: -15px;
+  width: 35px !important;
+  height: 35px !important;
+  background: white;
+  border-radius: 50px;
+  border-width: 4px;
+  border-style: solid;
+  border-color: black;
+}
+
+.avatar:hover {
+  box-shadow: 0 0 8px black;
+}
+
+.bar:hover {
+  box-shadow: 0 0 8px black;
+}
+
+div {
+  background: rgba(0, 0, 0, 0.12);
+  height: 5px;
+}

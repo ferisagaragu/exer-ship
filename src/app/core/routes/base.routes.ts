@@ -1,7 +1,9 @@
-export const BASE_ROUTES: Array<any> = [
+import { Routes } from "@angular/router";
+
+export const BASE_ROUTES: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'authorization'
+    redirectTo: 'authentication'
   }
 ];

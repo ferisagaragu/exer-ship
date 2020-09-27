@@ -1,0 +1,44 @@
+<div class="aligner">
+  <div class="aligner-center animate__animated animate__backInDown">
+    <form class="card card-size p-4" [formGroup]="form" (submit)="onSubmit()">
+      <div class="text-center" [inlineSVG]="'../../assets/svg/exercise.svg'"></div>
+
+      <mat-form-field class="mt-2" appearance="outline">
+        <mat-label>Nombre de usuario o Correo electrónico</mat-label>
+        <input form matInput formControlName="userName">
+        <mat-error>El nombre de usuario o correo electrónico es requerido</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="mt-2" appearance="outline">
+        <mat-label>Contraseña</mat-label>
+        <input form matInput formControlName="password" />
+        <mat-error>La contraseña es requerida</mat-error>
+      </mat-form-field>
+
+      <div class="text-center">
+        <a class="mt-2" [routerLink]="['../recover-password']">
+          Olvide mi contraseña
+        </a>
+      </div>
+
+      <div class="text-center mt-4">
+        <button
+          class="mr-3"
+          mat-stroked-button
+          color="primary"
+          type="button"
+          [routerLink]="['../sign-up']"
+        >
+          Regístrame
+        </button>
+
+        <button
+          mat-stroked-button
+          color="primary"
+        >
+          Iniciar sesión
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  host: 'http://localhost:5000',
-  token: sessionStorage.getItem('token')
+  baseUrl: 'http://localhost:5000'
 };
 
 /*
