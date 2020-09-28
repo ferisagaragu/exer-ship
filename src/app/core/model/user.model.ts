@@ -1,5 +1,3 @@
-import { DayModel } from './day.model';
-
 export class UserModel {
 
   uid: string;
