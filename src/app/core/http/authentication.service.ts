@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
 import { Observable } from 'rxjs';
 import { UserModel } from "../model/user.model";
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class AuthenticationService {
   }
 
   singUp(user: UserModel): Observable<any> {
-    return this.http.post('http://localhost:5000/auth/sign-up', user)
+    return this.http.post(`${environment.baseUrl}/auth/sign-up`, user)
   }
 
   activateAccount(form: any) {
