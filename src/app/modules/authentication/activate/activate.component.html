@@ -1,1 +1,45 @@
-<p>activate works!</p>
+<div class="aligner">
+  <div class="aligner-center animate__animated animate__backInDown">
+    <form class="card card-size p-4" [formGroup]="form" (submit)="onSubmit()">
+      <div class="text-center" [inlineSVG]="'../../assets/svg/activate.svg'"></div>
+
+      <mat-form-field class="mt-2" appearance="outline">
+        <mat-label>Contraseña</mat-label>
+
+        <input type="password" form matInput formControlName="password">
+
+        <mat-error
+          *ngIf="form.get(['password']).hasError('required')"
+        >
+          La contraseña es requerida
+        </mat-error>
+
+        <mat-error
+          *ngIf="form.get(['password']).hasError('pattern')"
+        >
+          La contraseña debe contener mayúsculas, números y
+          ser al menos de 8 caracteres
+        </mat-error>
+      </mat-form-field>
+
+      <div *ngIf="load" class="text-center mt-3">
+        <mat-progress-spinner
+          class="margin-spinner"
+          mode="indeterminate"
+          strokeWidth="1"
+          diameter="50"
+        >
+        </mat-progress-spinner>
+      </div>
+
+      <div *ngIf="!load" class="text-center mt-3">
+        <button
+          mat-stroked-button
+          color="primary"
+        >
+          Activar cuenta
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

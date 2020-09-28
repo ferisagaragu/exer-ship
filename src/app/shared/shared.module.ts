@@ -7,6 +7,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { InlineSVGModule } from 'ng-inline-svg';
 import { BarExerciseComponent } from './bar-exercise/bar-exercise.component';
 import { BarExerciseShadowDirective } from '../core/directives/bar-exercise-shadow.directive';
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { BarExerciseShadowDirective } from '../core/directives/bar-exercise-shad
     MatButtonModule,
     MatInputModule,
     MatProgressBarModule,
+    MatProgressSpinnerModule,
     InlineSVGModule.forRoot()
   ],
   exports: [
@@ -26,6 +28,7 @@ import { BarExerciseShadowDirective } from '../core/directives/bar-exercise-shad
     MatButtonModule,
     MatInputModule,
     MatProgressBarModule,
+    MatProgressSpinnerModule,
     InlineSVGModule,
     BarExerciseComponent,
     BarExerciseShadowDirective

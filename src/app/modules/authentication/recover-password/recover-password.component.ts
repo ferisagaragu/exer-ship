@@ -25,7 +25,7 @@ export class RecoverPasswordComponent {
 
   private createForm(): void {
     this.form = this.formBuilder.group({
-      email: ['', Validators.compose([Validators.required])]
+      email: ['', Validators.compose([Validators.required, Validators.email])]
     });
   }
 }

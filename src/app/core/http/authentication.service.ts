@@ -16,6 +16,18 @@ export class AuthenticationService {
       .pipe(map(resp => this.convertUser(resp)))
   }
 
+  canActivate(userUid: string) {
+    return this.http.get(`http://localhost:5000/auth/can-activate/${userUid}`)
+  }
+
+  singUp(user: UserModel): Observable<any> {
+    return this.http.post('http://localhost:5000/auth/sign-up', user)
+  }
+
+  activateAccount(form: any) {
+    return this.http.post('http://localhost:5000/auth/activate-account', form)
+  }
+
   private convertUser(resp: any): any {
     sessionStorage.setItem('user_data', JSON.stringify(resp.data));
     sessionStorage.setItem('token', resp.data.session.token);
