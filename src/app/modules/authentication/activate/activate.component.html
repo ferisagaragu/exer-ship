@@ -6,7 +6,23 @@
       <mat-form-field class="mt-2" appearance="outline">
         <mat-label>Contraseña</mat-label>
 
-        <input type="password" form matInput formControlName="password">
+        <input
+          form
+          matInput
+          formControlName="password"
+          [type]="hide ? 'password' : 'text'"
+        >
+
+        <button
+          mat-icon-button
+          matSuffix
+          type="button"
+          (click)="hide = !hide"
+        >
+          <mat-icon>
+            {{ hide ? 'visibility_off' : 'visibility' }}
+          </mat-icon>
+        </button>
 
         <mat-error
           *ngIf="form.get(['password']).hasError('required')"

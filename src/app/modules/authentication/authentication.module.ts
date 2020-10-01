@@ -7,10 +7,11 @@ import { ActivateComponent } from './activate/activate.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { RecoverPasswordComponent } from './recover-password/recover-password.component';
+import { NewPasswordComponent } from './new-password/new-password.component';
 
 
 @NgModule({
-  declarations: [ActivateComponent, SignUpComponent, SignInComponent, RecoverPasswordComponent],
+  declarations: [ActivateComponent, SignUpComponent, SignInComponent, RecoverPasswordComponent, NewPasswordComponent],
   imports: [
     CommonModule,
     AuthenticationRoutingModule,

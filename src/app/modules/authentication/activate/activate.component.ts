@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { AuthenticationService } from "../../../core/http/authentication.service";
-import { ActivatedRoute, Router } from "@angular/router";
-import Swal from "sweetalert2";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthenticationService } from '../../../core/http/authentication.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-activate',
@@ -14,6 +14,7 @@ export class ActivateComponent implements OnInit {
   form: FormGroup;
   load: boolean;
   userUid: string;
+  hide: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -22,6 +23,7 @@ export class ActivateComponent implements OnInit {
     private route: Router
   ) {
     this.load = false;
+    this.hide = true;
     this.createForm();
   }
 

@@ -39,7 +39,6 @@ export class SignUpComponent {
         });
         this.load = false;
       }, ({ error }) => {
-        console.log(error)
         Swal.fire({
           title: 'Ohh no!!',
           text: error.message,

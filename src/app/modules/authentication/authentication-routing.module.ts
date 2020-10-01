@@ -4,6 +4,7 @@ import { SignInComponent } from "./sign-in/sign-in.component";
 import { ActivateComponent } from "./activate/activate.component";
 import { SignUpComponent } from "./sign-up/sign-up.component";
 import { RecoverPasswordComponent } from "./recover-password/recover-password.component";
+import { NewPasswordComponent } from './new-password/new-password.component';
 
 const routes: Routes = [
   {
@@ -14,14 +15,17 @@ const routes: Routes = [
     path: 'sign-in',
     component: SignInComponent
   },{
-    path: 'activate/:uid',
-    component: ActivateComponent
-  },{
     path: 'sign-up',
     component: SignUpComponent
   },{
+    path: 'activate/:uid',
+    component: ActivateComponent
+  },{
     path: 'recover-password',
     component: RecoverPasswordComponent
+  },{
+    path: 'new-password/:uid',
+    component: NewPasswordComponent
   }
 ];
 

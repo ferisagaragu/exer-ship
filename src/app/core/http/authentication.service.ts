@@ -13,12 +13,12 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   logIn(user: any): Observable<UserModel> {
-    return this.http.post('http://localhost:5000/auth/sign-in', user)
+    return this.http.post(`${environment.baseUrl}/auth/sign-in`, user)
       .pipe(map(resp => this.convertUser(resp)))
   }
 
   canActivate(userUid: string) {
-    return this.http.get(`http://localhost:5000/auth/can-activate/${userUid}`)
+    return this.http.get(`${environment.baseUrl}/auth/can-activate/${userUid}`)
   }
 
   singUp(user: UserModel): Observable<any> {
@@ -26,7 +26,11 @@ export class AuthenticationService {
   }
 
   activateAccount(form: any) {
-    return this.http.post('http://localhost:5000/auth/activate-account', form)
+    return this.http.post(`${environment.baseUrl}/auth/activate-account`, form)
+  }
+
+  recoverPasswordEmail(form: any) {
+    return this.http.post(`${environment.baseUrl}/auth/recover-password-email`, form)
   }
 
   private convertUser(resp: any): any {

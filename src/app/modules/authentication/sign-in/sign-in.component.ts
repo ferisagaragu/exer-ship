@@ -11,6 +11,7 @@ import { Router } from "@angular/router";
 export class SignInComponent {
 
   form: FormGroup;
+  hide: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -18,6 +19,7 @@ export class SignInComponent {
     private router: Router
   ) {
     this.createForm();
+    this.hide = true;
   }
 
   onSubmit(): void {

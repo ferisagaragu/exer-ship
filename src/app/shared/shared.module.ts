@@ -8,6 +8,7 @@ import { InlineSVGModule } from 'ng-inline-svg';
 import { BarExerciseComponent } from './bar-exercise/bar-exercise.component';
 import { BarExerciseShadowDirective } from '../core/directives/bar-exercise-shadow.directive';
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
     MatInputModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
+    MatIconModule,
     InlineSVGModule.forRoot()
   ],
   exports: [
@@ -31,7 +33,8 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
     MatProgressSpinnerModule,
     InlineSVGModule,
     BarExerciseComponent,
-    BarExerciseShadowDirective
+    BarExerciseShadowDirective,
+    MatIconModule
   ]
 })
 export class SharedModule { }
