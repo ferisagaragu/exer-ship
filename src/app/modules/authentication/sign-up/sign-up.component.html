@@ -6,13 +6,35 @@
       <mat-form-field class="mt-2" appearance="outline">
         <mat-label>Nombre</mat-label>
         <input form matInput formControlName="name">
-        <mat-error>El nombre es requerido</mat-error>
+
+        <mat-error
+          *ngIf="form.get(['name']).hasError('required')"
+        >
+          El nombre es requerido
+        </mat-error>
+
+        <mat-error
+          *ngIf="form.get(['name']).hasError('minlength')"
+        >
+          El nombre debe ser mayor a 4 caracteres
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="mt-2" appearance="outline">
         <mat-label>Nombre de usuario</mat-label>
         <input form matInput formControlName="userName">
-        <mat-error>El nombre de usuario es requerido</mat-error>
+
+        <mat-error
+          *ngIf="form.get(['userName']).hasError('required')"
+        >
+          El nombre de usuario es requerido
+        </mat-error>
+
+        <mat-error
+          *ngIf="form.get(['userName']).hasError('minlength')"
+        >
+          El nombre de usuario debe ser mayor a 4 caracteres
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="mt-2" appearance="outline">

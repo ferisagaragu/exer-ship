@@ -52,8 +52,8 @@ export class SignUpComponent {
 
   private createForm(): void {
     this.form = this.formBuilder.group({
-      name: ['', Validators.compose([Validators.required])],
-      userName: ['', Validators.compose([Validators.required])],
+      name: ['', Validators.compose([Validators.required, Validators.minLength(4)])],
+      userName: ['', Validators.compose([Validators.required, Validators.minLength(4)])],
       email: ['', Validators.compose([Validators.required, Validators.email])]
     });
   }

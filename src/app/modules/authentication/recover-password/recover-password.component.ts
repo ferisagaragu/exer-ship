@@ -29,7 +29,7 @@ export class RecoverPasswordComponent {
     }
 
     this.load = true;
-    this.authenticationService.recoverPasswordEmail(this.form.value).subscribe(
+    this.authenticationService.recoverPassword(this.form.value).subscribe(
       (resp: any) => {
         Swal.fire({
           title: 'Yeeii!!',
@@ -56,4 +56,5 @@ export class RecoverPasswordComponent {
       email: ['', Validators.compose([Validators.required, Validators.email])]
     });
   }
+
 }

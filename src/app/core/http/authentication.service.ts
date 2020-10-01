@@ -21,6 +21,10 @@ export class AuthenticationService {
     return this.http.get(`${environment.baseUrl}/auth/can-activate/${userUid}`)
   }
 
+  canChangePassword(userUid: string) {
+    return this.http.get(`${environment.baseUrl}/auth/can-change-password/${userUid}`)
+  }
+
   singUp(user: UserModel): Observable<any> {
     return this.http.post(`${environment.baseUrl}/auth/sign-up`, user)
   }
@@ -29,8 +33,12 @@ export class AuthenticationService {
     return this.http.post(`${environment.baseUrl}/auth/activate-account`, form)
   }
 
-  recoverPasswordEmail(form: any) {
+  recoverPassword(form: any) {
     return this.http.post(`${environment.baseUrl}/auth/recover-password-email`, form)
+  }
+
+  changePassword(form: any) {
+    return this.http.post(`${environment.baseUrl}/auth/change-password`, form)
   }
 
   private convertUser(resp: any): any {
