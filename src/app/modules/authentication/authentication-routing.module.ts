@@ -5,6 +5,8 @@ import { ActivateComponent } from "./activate/activate.component";
 import { SignUpComponent } from "./sign-up/sign-up.component";
 import { RecoverPasswordComponent } from "./recover-password/recover-password.component";
 import { NewPasswordComponent } from './new-password/new-password.component';
+import { CanChangePasswordGuard } from '../../core/guards/can-change-password.guard';
+import { CanActivateAccountGuard } from '../../core/guards/can-activate-account.guard';
 
 const routes: Routes = [
   {
@@ -19,13 +21,15 @@ const routes: Routes = [
     component: SignUpComponent
   },{
     path: 'activate/:uid',
-    component: ActivateComponent
+    component: ActivateComponent,
+    canActivate: [CanActivateAccountGuard]
   },{
     path: 'recover-password',
     component: RecoverPasswordComponent
   },{
-    path: 'new-password/:uid',
-    component: NewPasswordComponent
+    path: 'new-password/:activatePassword',
+    component: NewPasswordComponent,
+    canActivate: [CanChangePasswordGuard]
   }
 ];
 

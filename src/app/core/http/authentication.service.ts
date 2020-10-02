@@ -17,8 +17,8 @@ export class AuthenticationService {
       .pipe(map(resp => this.convertUser(resp)))
   }
 
-  canActivate(userUid: string) {
-    return this.http.get(`${environment.baseUrl}/auth/can-activate/${userUid}`)
+  canActivateAccount(userUid: string) {
+    return this.http.get(`${environment.baseUrl}/auth/can-activate-account/${userUid}`)
   }
 
   canChangePassword(userUid: string) {
@@ -34,7 +34,7 @@ export class AuthenticationService {
   }
 
   recoverPassword(form: any) {
-    return this.http.post(`${environment.baseUrl}/auth/recover-password-email`, form)
+    return this.http.post(`${environment.baseUrl}/auth/recover-password`, form)
   }
 
   changePassword(form: any) {

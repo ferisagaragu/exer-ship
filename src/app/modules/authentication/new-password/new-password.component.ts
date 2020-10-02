@@ -25,7 +25,7 @@ export class NewPasswordComponent {
     this.load = false;
     this.hide = true;
     this.createForm();
-    this.canChangePassword();
+    this.getParams();
   }
 
   onSubmit(): void {
@@ -41,11 +41,12 @@ export class NewPasswordComponent {
       (resp: any) => {
         Swal.fire({
           title: 'Yeeii!!',
-          text: 'Se a cambiado tu contraseña ahora podras iniciar sesión con ella',
+          text: resp.message,
           icon: 'success'
         }).then(() => {
           this.router.navigate(['/']);
         });
+
         this.load = false;
       }, (error) => {
         Swal.fire({
@@ -72,22 +73,9 @@ export class NewPasswordComponent {
     });
   }
 
-  private canChangePassword(): void {
-    this.activatedRoute.params.subscribe(({ uid }) => {
-      this.activatePassword = uid;
-      this.authenticationService.canChangePassword(uid).subscribe(
-        (resp) => {
-          console.log(resp);
-        }, ({ error }) => {
-          Swal.fire({
-            title: 'Ohh no!!',
-            text: error.message,
-            icon: 'error'
-          }).then(() => {
-            this.router.navigate(['/']);
-          });
-        }
-      );
+  private getParams(): void {
+    this.activatedRoute.params.subscribe(({ activatePassword }) => {
+      this.activatePassword = activatePassword;
     });
   }
 

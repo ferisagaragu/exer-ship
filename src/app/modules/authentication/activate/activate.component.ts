@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../../core/http/authentication.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
   templateUrl: './activate.component.html',
   styleUrls: ['./activate.component.scss']
 })
-export class ActivateComponent implements OnInit {
+export class ActivateComponent {
 
   form: FormGroup;
   load: boolean;
@@ -25,30 +25,7 @@ export class ActivateComponent implements OnInit {
     this.load = false;
     this.hide = true;
     this.createForm();
-  }
-
-  ngOnInit(): void {
-    this.activatedRoute.params.subscribe(
-      ({ uid }) => {
-        this.userUid = uid;
-        this.canActivateAccount(uid);
-      }, () => {}
-    );
-  }
-
-  canActivateAccount(uid) {
-    this.authenticationService.canActivate(uid).subscribe(
-      (resp: any) => { },
-      ({ error }) => {
-        Swal.fire({
-          title: 'Ohh no!!',
-          text: error.message,
-          icon: 'error'
-        }).then(() => {
-          this.route.navigate(['/']);
-        });
-      }
-    );
+    this.getParams();
   }
 
   onSubmit(): void {
@@ -61,10 +38,10 @@ export class ActivateComponent implements OnInit {
       ...this.form.value,
       uid: this.userUid
     }).subscribe(
-      (resp) => {
+      (resp: any) => {
         Swal.fire({
           title: 'Yeeii!!',
-          text: 'Cuenta activada',
+          text: resp.message,
           icon: 'success'
         }).then(() => {
           this.route.navigate(['/'])
@@ -94,6 +71,14 @@ export class ActivateComponent implements OnInit {
         ])
       ]
     });
+  }
+
+  private getParams(): void {
+    this.activatedRoute.params.subscribe(
+      ({ uid }) => {
+        this.userUid = uid;
+      }, () => {}
+    );
   }
 
 }

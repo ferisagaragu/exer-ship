@@ -33,7 +33,7 @@ export class RecoverPasswordComponent {
       (resp: any) => {
         Swal.fire({
           title: 'Yeeii!!',
-          text: resp.data.message,
+          text: resp.message,
           icon: 'success'
         }).then(() => {
           this.router.navigate(['/']);
