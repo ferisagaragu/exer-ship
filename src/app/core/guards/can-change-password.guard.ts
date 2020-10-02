@@ -15,11 +15,7 @@ export class CanChangePasswordGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> {
-    return this.authenticationService.canChangePassword(next.params.activatePassword)
-      .pipe(
-        map((resp: any) => resp.data.canChangePassword),
-        catchError(_ => [false])
-      )
+    return this.authenticationService.canChangePassword(next.params.activatePassword);
   }
 
 }

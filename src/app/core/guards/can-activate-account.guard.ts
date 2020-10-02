@@ -15,11 +15,7 @@ export class CanActivateAccountGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> {
-    return this.authenticationService.canActivateAccount(next.params.uid)
-      .pipe(
-        map((resp: any) => resp.data.canActivate),
-        catchError(_ => [false])
-      );
+    return this.authenticationService.canActivateAccount(next.params.uid);
   }
 
 }

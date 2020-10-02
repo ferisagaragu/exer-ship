@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../../core/http/authentication.service';
-import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { errorAlert, successAlert } from '../../../core/functions/swal.function';
 
 @Component({
   selector: 'app-recover-password',
@@ -31,21 +31,12 @@ export class RecoverPasswordComponent {
     this.load = true;
     this.authenticationService.recoverPassword(this.form.value).subscribe(
       (resp: any) => {
-        Swal.fire({
-          title: 'Yeeii!!',
-          text: resp.message,
-          icon: 'success'
-        }).then(() => {
+        successAlert(resp.message).then(() => {
           this.router.navigate(['/']);
+          this.load = false;
         });
-        this.load = false;
       }, (error) => {
-        Swal.fire({
-          title: 'Ohh no!!',
-          text: error.message,
-          icon: 'error'
-        });
-
+        errorAlert(error.message);
         this.load = false;
       }
     );

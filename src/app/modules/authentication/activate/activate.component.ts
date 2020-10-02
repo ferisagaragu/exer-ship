@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../../core/http/authentication.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import Swal from 'sweetalert2';
+import { errorAlert, successAlert } from '../../../core/functions/swal.function';
 
 @Component({
   selector: 'app-activate',
@@ -38,23 +38,13 @@ export class ActivateComponent {
       ...this.form.value,
       uid: this.userUid
     }).subscribe(
-      (resp: any) => {
-        Swal.fire({
-          title: 'Yeeii!!',
-          text: resp.message,
-          icon: 'success'
-        }).then(() => {
+      (resp) => {
+        successAlert(resp.message).then(() => {
+          this.load = false;
           this.route.navigate(['/'])
         });
-
-        this.load = false;
       }, ({ error }) => {
-        Swal.fire({
-          title: 'Ohh no!!',
-          text: error.message,
-          icon: 'error'
-        });
-
+        errorAlert(error.message);
         this.load = false;
       }
     )
