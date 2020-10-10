@@ -4,6 +4,7 @@
 /dist
 /tmp
 /out-tsc
+/.scannerwork
 # Only exists if Bazel was run
 /bazel-out
 
@@ -22,7 +23,6 @@ speed-measure-plugin*.json
 *.launch
 .settings/
 *.sublime-workspace
-.scannerwork/*
 
 # IDE - VSCode
 .vscode/*
@@ -45,4 +45,4 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-package-lock.json
+*-lock.json
