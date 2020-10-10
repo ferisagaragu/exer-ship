@@ -39,7 +39,17 @@
         </a>
       </div>
 
-      <div class="text-center mt-4">
+      <div *ngIf="load" class="text-center mt-3">
+        <mat-progress-spinner
+          class="margin-spinner"
+          mode="indeterminate"
+          strokeWidth="1"
+          diameter="50"
+        >
+        </mat-progress-spinner>
+      </div>
+
+      <div *ngIf="!load" class="text-center mt-4">
         <button
           class="mr-3"
           mat-stroked-button

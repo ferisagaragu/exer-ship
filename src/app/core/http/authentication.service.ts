@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { UserModel } from "../model/user.model";
+import { UserModel } from '../model/user.model';
 import { environment } from '../../../environments/environment';
 import { ResponseModel } from '../model/response.model';
+import { setSessionEnvironment } from '../functions/global.function';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,18 @@ import { ResponseModel } from '../model/response.model';
 export class AuthenticationService {
 
   constructor(private http: HttpClient) { }
+
+  validateToken(): Observable<boolean> {
+    return this.http.get(
+      `${environment.baseUrl}/auth/validate-token`,
+      {
+        headers: new HttpHeaders()
+          .set('Authorization', `Bearer ${environment.token}`)
+      }
+    ).pipe(
+      map((resp: any) => resp.data.validToken)
+    );
+  }
 
   canActivateAccount(userUid: string): Observable<boolean> {
     return this.http.get(`${environment.baseUrl}/auth/can-activate-account/${userUid}`)
@@ -49,24 +62,37 @@ export class AuthenticationService {
       .pipe(map(resp => new ResponseModel(resp)));
   }
 
-
-  //parte de autenticacion pendiente
-  logIn(user: any): Observable<UserModel> {
+  singIn(user: UserModel): Observable<UserModel> {
     return this.http.post(`${environment.baseUrl}/auth/sign-in`, user)
-      .pipe(map(resp => this.convertUser(resp)))
+      .pipe(map(resp => this.convertUser(resp)));
   }
 
-  private convertUser(resp: any): any {
-    sessionStorage.setItem('user_data', JSON.stringify(resp.data));
-    sessionStorage.setItem('token', resp.data.session.token);
-    this.refreshToken(resp.data.session.expiration);
-    return new UserModel(resp.data);
+  refreshToken(refreshToken: string): Observable<any> {
+    return this.http.post(`${environment.baseUrl}/auth/refresh-token`, {
+      refreshToken
+    });
   }
 
-  private refreshToken(time: number): void {
+  private convertUser(resp): UserModel {
+    const { name, lastName, userName, email, photo, session } = resp.data;
+    const user = new UserModel({
+      name,
+      lastName,
+      userName,
+      email,
+      photo
+    });
+
+    setSessionEnvironment(session, user);
+    //aqui tiene que ir el refresh token
+
+    return user;
+  }
+
+  /*private refreshToken(time: number, token: string): void {
     setInterval(() => {
       console.log('se actualiza el token');
     }, time - 60);
-  }
+  }*/
 
 }

@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Get git repository') {
+            steps {
+                git branch: 'develop',
+                credentialsId: 'gitCredential',
+                url: 'https://github.com/ferisagaragu/exer-ship.git'
+            }
+        }
+
+        stage('Generate app') {
+            steps {
+                bat '''
+                   "C:\\Users\\Qualtop\\AppData\\Roaming\\npm\\ng.cmd" build --prod
+                '''
+            }
+        }
+    }
+}
