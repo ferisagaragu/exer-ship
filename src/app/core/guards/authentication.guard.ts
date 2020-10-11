@@ -3,7 +3,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 import { Observable, Subscriber } from 'rxjs';
 import { AuthenticationService } from '../http/authentication.service';
 import { environment } from '../../../environments/environment';
-import { cleanSessionEnvironment, setTokenSessionEnvironment } from '../functions/global.function';
+import { cleanSessionEnvironment, getDataAccess, refreshToken, setTokenSessionEnvironment } from '../functions/global.function';
 
 @Injectable({
   providedIn: 'root'
@@ -20,37 +20,43 @@ export class AuthenticationGuard implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean> {
     return new Observable<boolean>(observer => {
-      if (
-        (new Date() < environment.expirationDate) &&
-        environment.token &&
-        environment.user &&
-        environment.expiration
-      ) {
+      const accessData = getDataAccess();
+
+      if (!accessData) {
+        this.returnAuthenticationFalse(observer);
+        return;
+      }
+
+      if (new Date() < environment.expirationDate) {
         this.authenticationService.validateToken().subscribe(
-          (resp) => {
-            observer.next(true);
-          }, (resp) => {
-            this.returnAuthentication(observer);
+          () => {
+            this.returnAuthenticationTrue(observer, true);
+          }, () => {
+            this.returnAuthenticationFalse(observer);
           }
         );
       } else {
-        if (environment.refreshToken && environment.user) {
-          this.authenticationService.refreshToken(environment.refreshToken).subscribe(
-            (resp) => {
-              setTokenSessionEnvironment(resp.data);
-              observer.next(true);
-            }, () => {
-              this.returnAuthentication(observer);
-            }
-          );
-        } else {
-          this.returnAuthentication(observer);
-        }
+        this.authenticationService.refreshToken(environment.refreshToken).subscribe(
+          (resp) => {
+            setTokenSessionEnvironment(resp.data);
+            this.returnAuthenticationTrue(observer, false);
+          }, () => {
+            this.returnAuthenticationFalse(observer);
+          }
+        );
       }
     });
   }
 
-  returnAuthentication(observer: Subscriber<boolean>): void {
+  returnAuthenticationTrue(
+    observer: Subscriber<boolean>,
+    calculateExpire: boolean
+  ): void {
+    observer.next(true);
+    refreshToken(calculateExpire);
+  }
+
+  returnAuthenticationFalse(observer: Subscriber<boolean>): void {
     cleanSessionEnvironment();
     observer.next(false);
     this.router.navigate(['/']);

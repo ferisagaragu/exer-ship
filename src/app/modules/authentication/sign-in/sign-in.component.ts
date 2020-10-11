@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../../core/http/authentication.service';
 import { Router } from '@angular/router';
 import { errorAlert, successToast } from '../../../core/functions/swal.function';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-sign-in',
@@ -23,6 +24,8 @@ export class SignInComponent {
     this.createForm();
     this.load = false;
     this.hide = true;
+
+    console.log(environment)
   }
 
   onSubmit(): void {

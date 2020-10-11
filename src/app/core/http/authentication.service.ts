@@ -5,14 +5,17 @@ import { Observable } from 'rxjs';
 import { UserModel } from '../model/user.model';
 import { environment } from '../../../environments/environment';
 import { ResponseModel } from '../model/response.model';
-import { setSessionEnvironment } from '../functions/global.function';
+import { refreshToken, setSessionEnvironment } from '../functions/global.function';
+import { HttpService } from './base-http.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticationService {
+export class AuthenticationService extends HttpService {
 
-  constructor(private http: HttpClient) { }
+  constructor(public http: HttpClient) {
+    super(http);
+  }
 
   validateToken(): Observable<boolean> {
     return this.http.get(
@@ -84,15 +87,8 @@ export class AuthenticationService {
     });
 
     setSessionEnvironment(session, user);
-    //aqui tiene que ir el refresh token
-
+    refreshToken(true);
     return user;
   }
-
-  /*private refreshToken(time: number, token: string): void {
-    setInterval(() => {
-      console.log('se actualiza el token');
-    }, time - 60);
-  }*/
 
 }
