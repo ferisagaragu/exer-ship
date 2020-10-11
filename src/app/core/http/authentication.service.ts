@@ -70,9 +70,9 @@ export class AuthenticationService extends HttpService {
       .pipe(map(resp => this.convertUser(resp)));
   }
 
-  refreshToken(refreshToken: string): Observable<any> {
+  refreshToken(token: string): Observable<any> {
     return this.http.post(`${environment.baseUrl}/auth/refresh-token`, {
-      refreshToken
+      refreshToken: token
     });
   }
 
