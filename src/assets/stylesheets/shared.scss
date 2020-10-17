@@ -1,15 +1,23 @@
+@media(max-width: 766px){
+  .aligner-center {
+    max-width: none;
+  }
+}
+
+@media(min-width: 767px){
+  .aligner-center {
+    max-width: 50%;
+  }
+}
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, 'Helvetica Neue', sans-serif; }
 
 .aligner {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
-}
-
-.aligner-center {
-  max-width: 50%;
 }
 
 .card-size {
