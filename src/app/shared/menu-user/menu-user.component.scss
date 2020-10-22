@@ -1,0 +1,31 @@
+img {
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  cursor: pointer;
+  position: fixed;
+  top: 13px;
+  right: 10px;
+}
+
+.badge {
+  position: fixed;
+  color: rgba(0, 0, 0, 0.87);
+  background: #1de9b6;
+  font-size: 12px;
+  top: 8px;
+  right: 33px;
+  z-index: 1;
+  border-radius: 22px;
+  width: 22px;
+  height: 22px;
+  text-align: center;
+  padding-top: 5px;
+  padding-left: 3px;
+}
+
+.badge-plus {
+  padding-top: 5.3px;
+  padding-left: 2px;
+  font-size: 11px;
+}

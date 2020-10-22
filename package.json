@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "electron": "electron",
-    "start": "ng serve",
+    "start": "ng serve --host 0.0.0.0",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -28,7 +27,9 @@
     "bootstrap": "^4.5.2",
     "crypto-js": "^4.0.0",
     "ng-inline-svg": "^11.0.0",
+    "ngx-toastr": "^13.1.0",
     "rxjs": "~6.5.4",
+    "sockjs-client": "^1.5.0",
     "sweetalert2": "^10.3.5",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

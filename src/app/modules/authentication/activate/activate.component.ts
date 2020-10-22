@@ -39,13 +39,13 @@ export class ActivateComponent {
       uid: this.userUid
     }).subscribe(
       (resp) => {
+        this.load = false;
         successAlert(resp.message).then(() => {
-          this.load = false;
           this.route.navigate(['/'])
         });
       }, ({ error }) => {
-        errorAlert(error.message);
         this.load = false;
+        errorAlert(error.message);
       }
     )
   }

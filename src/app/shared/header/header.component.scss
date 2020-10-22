@@ -1,0 +1,41 @@
+@media(max-width: 766px) {
+  header {
+    background: #263238;
+    color: white;
+    height: 60px;
+    width: 100%;
+    box-shadow:
+      0 3px 3px -3px rgba(231, 144, 144, 0.2),
+      0 3px 3px 0 rgba(0,0,0,.14),
+      0 3px 3px 0 rgba(0,0,0,.12);
+    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 12px 12px 12px 12px;
+    position: fixed;
+    text-align: center;
+  }
+}
+
+@media(min-width: 767px) {
+  header {
+    background: #263238;
+    color: white;
+    height: 60px;
+    width: 100%;
+    box-shadow:
+      0 3px 3px -3px rgba(231, 144, 144, 0.2),
+      0 3px 3px 0 rgba(0,0,0,.14),
+      0 3px 3px 0 rgba(0,0,0,.12);
+    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 12px 12px 12px 80px;
+    position: fixed;
+  }
+}
+
+.row {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+.header-space {
+  height: 60px;
+}

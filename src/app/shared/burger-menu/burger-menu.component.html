@@ -1,0 +1,17 @@
+<em class="mdi mdi-menu menu" (click)="show = !show"></em>
+
+<nav
+  class="animate__animated animate__slideInLeft"
+  *ngIf="show"
+  [class.animate__slideInLeft]="show"
+  [class.animate__slideOutLeft]="back"
+>
+    <div class="text-right">
+      <button
+        class="close-button"
+        (click)="close()"
+      >
+        <em class="mdi mdi-close"></em>
+      </button>
+    </div>
+</nav>

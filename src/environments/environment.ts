@@ -4,13 +4,13 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:5000',
+  baseUrl: 'http://192.168.0.29:5000',
+  baseWs: 'http://192.168.0.29:5000/ws',
   expiration: null,
   expirationDate: null,
   user: null,
   refreshToken: null,
-  token: null,
-  signIn: false
+  token: null
 };
 
 /*

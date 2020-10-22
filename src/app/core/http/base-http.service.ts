@@ -18,7 +18,7 @@ export class HttpService {
   }
 
   get headers(): HttpHeaders {
-    return new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    return new HttpHeaders().set('Authorization', `Bearer ${environment.token}`);
   }
 
 }

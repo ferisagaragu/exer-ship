@@ -7,9 +7,20 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { InlineSVGModule } from 'ng-inline-svg';
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatIconModule } from '@angular/material/icon';
+import { HeaderComponent } from './header/header.component';
+import { BurgerMenuComponent } from './burger-menu/burger-menu.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatBadgeModule } from '@angular/material/badge';
+import { ToastrModule } from 'ngx-toastr';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MenuUserComponent } from './menu-user/menu-user.component';
+import { DialogNotificationComponent } from './dialog-notification/dialog-notification.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
-  declarations: [],
+  declarations: [HeaderComponent, BurgerMenuComponent, MenuUserComponent, DialogNotificationComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -18,7 +29,16 @@ import { MatIconModule } from '@angular/material/icon';
     MatProgressBarModule,
     MatProgressSpinnerModule,
     MatIconModule,
-    InlineSVGModule.forRoot()
+    MatMenuModule,
+    MatBadgeModule,
+    MatTooltipModule,
+    MatDialogModule,
+    MatCardModule,
+    MatCheckboxModule,
+    InlineSVGModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right'
+    })
   ],
   exports: [
     ReactiveFormsModule,
@@ -27,7 +47,17 @@ import { MatIconModule } from '@angular/material/icon';
     MatProgressBarModule,
     MatProgressSpinnerModule,
     InlineSVGModule,
-    MatIconModule
+    MatIconModule,
+    HeaderComponent,
+    BurgerMenuComponent,
+    MatMenuModule,
+    MatBadgeModule,
+    ToastrModule,
+    MatTooltipModule,
+    MatDialogModule,
+    MenuUserComponent,
+    MatCardModule,
+    MatCheckboxModule
   ]
 })
 export class SharedModule { }

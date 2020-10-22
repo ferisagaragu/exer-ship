@@ -31,7 +31,6 @@ export const cleanSessionEnvironment = (): void => {
   environment.refreshToken = null;
   environment.token = null;
   environment.user = null;
-  environment.signIn = false;
 }
 
 export const getDataAccess = (): any => {
@@ -70,7 +69,6 @@ const setSession = (): void => {
     environment.refreshToken = dataAccess.refreshToken;
     environment.token = dataAccess.token;
     environment.user = dataAccess.user;
-    environment.signIn = true;
   }
 }
 
