@@ -1,3 +1,7 @@
+<app-header *ngIf="isSignIn"></app-header>
+<app-burger-menu *ngIf="isSignIn"></app-burger-menu>
+<app-menu-user *ngIf="isSignIn"></app-menu-user>
+
 <div class="container">
   <router-outlet></router-outlet>
 </div>

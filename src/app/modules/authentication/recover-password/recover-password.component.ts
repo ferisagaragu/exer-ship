@@ -31,13 +31,13 @@ export class RecoverPasswordComponent {
     this.load = true;
     this.authenticationService.recoverPassword(this.form.value).subscribe(
       (resp: any) => {
+        this.load = false;
         successAlert(resp.message).then(() => {
           this.router.navigate(['/']);
-          this.load = false;
         });
       }, (error) => {
-        errorAlert(error.message);
         this.load = false;
+        errorAlert(error.message);
       }
     );
   }

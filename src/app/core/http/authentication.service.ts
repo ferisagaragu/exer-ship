@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { UserModel } from '../model/user.model';
 import { environment } from '../../../environments/environment';
 import { ResponseModel } from '../model/response.model';
@@ -13,6 +13,8 @@ import { HttpService } from './base-http.service';
 })
 export class AuthenticationService extends HttpService {
 
+  public isSignIn: BehaviorSubject<boolean> = new BehaviorSubject(false);
+
   constructor(public http: HttpClient) {
     super(http);
   }
@@ -20,10 +22,7 @@ export class AuthenticationService extends HttpService {
   validateToken(): Observable<boolean> {
     return this.http.get(
       `${environment.baseUrl}/auth/validate-token`,
-      {
-        headers: new HttpHeaders()
-          .set('Authorization', `Bearer ${environment.token}`)
-      }
+      { headers: this.headers }
     ).pipe(
       map((resp: any) => resp.data.validToken)
     );
@@ -77,8 +76,9 @@ export class AuthenticationService extends HttpService {
   }
 
   private convertUser(resp): UserModel {
-    const { name, lastName, userName, email, photo, session } = resp.data;
+    const { uid, name, lastName, userName, email, photo, session } = resp.data;
     const user = new UserModel({
+      uid,
       name,
       lastName,
       userName,

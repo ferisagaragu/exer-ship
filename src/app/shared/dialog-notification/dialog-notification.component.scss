@@ -1,0 +1,31 @@
+@media(max-width: 766px) {
+  .check-position {
+    padding-right: 10px;
+  }
+}
+
+.notification-list {
+  overflow-x: auto;
+  height: 250px;
+  background: #fafafa;
+}
+
+.title {
+  font-size: 16px;
+}
+
+.title-success {
+  color: #64DD17 !important;
+}
+
+.title-error {
+  color: #F44336 !important;
+}
+
+.title-info {
+  color: #00BCD4 !important;
+}
+
+.title-warn {
+  color: #FFEB3B !important;
+}

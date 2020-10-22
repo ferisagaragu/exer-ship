@@ -32,13 +32,13 @@ export class SignUpComponent {
     this.load = true;
     this.authenticationService.singUp(new UserModel(this.form.value)).subscribe(
       (resp) => {
+        this.load = false;
         successAlert(resp.message).then(() => {
           this.router.navigate(['/']);
-          this.load = false;
         });
       }, ({ error }) => {
-        errorAlert(error.message);
         this.load = false;
+        errorAlert(error.message);
       }
     )
   }

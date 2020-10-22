@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../../core/http/authentication.service';
 import { Router } from '@angular/router';
-import { errorAlert, successToast } from '../../../core/functions/swal.function';
-import { environment } from '../../../../environments/environment';
+import { errorAlert } from '../../../core/functions/swal.function';
 
 @Component({
   selector: 'app-sign-in',
@@ -24,8 +23,6 @@ export class SignInComponent {
     this.createForm();
     this.load = false;
     this.hide = true;
-
-    console.log(environment)
   }
 
   onSubmit(): void {
@@ -37,12 +34,11 @@ export class SignInComponent {
 
     this.authenticationService.singIn(this.form.value).subscribe(
       resp => {
-        this.router.navigate(['/dashboard']);
-        successToast(`Bienvenid@ ${resp.name}`);
         this.load = false;
+        this.router.navigate(['/progress']);
       }, ({ error }) => {
-        errorAlert(error.message);
         this.load = false;
+        errorAlert(error.message);
       }
     );
   }

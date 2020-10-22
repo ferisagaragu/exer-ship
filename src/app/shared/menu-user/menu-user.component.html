@@ -1,0 +1,42 @@
+<div
+  *ngIf="notifications.length"
+  class="badge"
+  [class.badge-plus]="notifications.length > 100"
+>
+  {{ convertNotificationNumber() }}
+</div>
+
+<img
+  [src]="user.photo"
+  [matMenuTriggerFor]="menu"
+  [matTooltip]="user.name + ' ' + (user.lastName ? user.lastName : '')"
+/>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <strong>
+      <em class="mdi mdi-account mr-2"></em>
+      {{ user.email }}
+    </strong>
+  </button>
+
+  <button
+    mat-menu-item
+    (click)="openNotifications()"
+  >
+    <strong>
+      <em class="mdi mdi-bell-ring mr-2"></em>
+      Notificaciones
+    </strong>
+  </button>
+
+  <button
+    mat-menu-item
+    (click)="singOut()"
+  >
+    <strong>
+      <em class="mdi mdi-exit-to-app mr-2"></em>
+      Cerrar sesión
+    </strong>
+  </button>
+</mat-menu>
