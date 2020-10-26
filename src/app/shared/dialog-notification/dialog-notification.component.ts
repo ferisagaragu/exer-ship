@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { NotificationModel } from '../../core/model/natification.model';
+import { NotificationModel } from '../../core/model/notification.model';
 
 @Component({
   selector: 'app-dialog-notification',

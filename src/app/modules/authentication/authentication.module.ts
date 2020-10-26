@@ -11,7 +11,13 @@ import { NewPasswordComponent } from './new-password/new-password.component';
 
 
 @NgModule({
-  declarations: [ActivateComponent, SignUpComponent, SignInComponent, RecoverPasswordComponent, NewPasswordComponent],
+  declarations: [
+    ActivateComponent,
+    SignUpComponent,
+    SignInComponent,
+    RecoverPasswordComponent,
+    NewPasswordComponent
+  ],
   imports: [
     CommonModule,
     AuthenticationRoutingModule,

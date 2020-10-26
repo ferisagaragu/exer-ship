@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../../core/http/authentication.service';
 import { Router } from '@angular/router';
-import { errorAlert } from '../../../core/functions/swal.function';
+import { SweetAlertService } from '../../../core/services/sweet-alert.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -18,7 +18,8 @@ export class SignInComponent {
   constructor(
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private sweetAlertService: SweetAlertService
   ) {
     this.createForm();
     this.load = false;
@@ -35,10 +36,10 @@ export class SignInComponent {
     this.authenticationService.singIn(this.form.value).subscribe(
       resp => {
         this.load = false;
-        this.router.navigate(['/progress']);
+        this.router.navigate(['/dashboard']);
       }, ({ error }) => {
         this.load = false;
-        errorAlert(error.message);
+        this.sweetAlertService.errorAlert(error.message);
       }
     );
   }

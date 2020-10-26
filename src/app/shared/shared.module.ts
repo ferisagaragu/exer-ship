@@ -18,9 +18,18 @@ import { MenuUserComponent } from './menu-user/menu-user.component';
 import { DialogNotificationComponent } from './dialog-notification/dialog-notification.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { BellNotificationComponent } from './bell-notification/bell-notification.component';
+import { MatTreeModule } from '@angular/material/tree';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [HeaderComponent, BurgerMenuComponent, MenuUserComponent, DialogNotificationComponent],
+  declarations: [
+    HeaderComponent,
+    BurgerMenuComponent,
+    MenuUserComponent,
+    DialogNotificationComponent,
+    BellNotificationComponent
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -35,10 +44,12 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatDialogModule,
     MatCardModule,
     MatCheckboxModule,
+    MatTreeModule,
     InlineSVGModule.forRoot(),
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
-    })
+    }),
+    RouterModule
   ],
   exports: [
     ReactiveFormsModule,
@@ -57,7 +68,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatDialogModule,
     MenuUserComponent,
     MatCardModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    BellNotificationComponent,
+    MatTreeModule
   ]
 })
 export class SharedModule { }

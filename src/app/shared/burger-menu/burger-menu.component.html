@@ -1,17 +1,50 @@
 <em class="mdi mdi-menu menu" (click)="show = !show"></em>
 
+<div
+  *ngIf="show"
+  class="animate__animated shadow-nav"
+  [class.animate__fadeIn]="show"
+  [class.animate__fadeOut]="back"
+  (click)="close()"
+></div>
+
 <nav
-  class="animate__animated animate__slideInLeft"
+  class="animate__animated"
   *ngIf="show"
   [class.animate__slideInLeft]="show"
   [class.animate__slideOutLeft]="back"
 >
-    <div class="text-right">
+  <div class="text-right">
+    <button
+      class="close-button"
+      (click)="close()"
+    >
+      <em class="mdi mdi-close"></em>
+    </button>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-12">
       <button
-        class="close-button"
-        (click)="close()"
+        class="w-100 text-left unselected"
+        routerLink="/dashboard/progress"
+        routerLinkActive="selected"
+        mat-button
       >
-        <em class="mdi mdi-close"></em>
+        <em class="mdi mdi-progress-check"></em>
+        Tu progreso
       </button>
     </div>
+
+    <div class="col-12 mt-3">
+      <button
+        class="w-100 text-left unselected"
+        routerLink="/dashboard/members"
+        routerLinkActive="selected"
+        mat-button
+      >
+        Tu progreso 2
+      </button>
+    </div>
+  </div>
 </nav>

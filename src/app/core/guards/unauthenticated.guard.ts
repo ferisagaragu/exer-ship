@@ -20,7 +20,7 @@ export class UnauthenticatedGuard implements CanActivate {
   ): Observable<boolean> {
     return new Observable<boolean>(observer => {
       if (environment.refreshToken) {
-        this.router.navigate(['/progress']);
+        this.router.navigate(['/dashboard']);
         this.authenticationService.isSignIn.next(true);
         observer.next(false);
       }
