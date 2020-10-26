@@ -94,6 +94,13 @@
             Ir
           </button>
         </div>
+
+        <div
+          *ngIf="errorNotification === notification.uid"
+          class="col-md-12 mt-3 text-danger"
+        >
+          <small>{{ message }}</small>
+        </div>
       </div>
     </mat-card>
   </div>

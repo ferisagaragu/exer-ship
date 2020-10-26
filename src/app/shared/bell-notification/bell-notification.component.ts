@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NotificationModel } from '../../core/model/notification.model';
 import { NotificationService } from '../../core/http/notification.service';
-import { SweetAlertService } from '../../core/services/sweet-alert.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,10 +14,11 @@ export class BellNotificationComponent implements OnInit {
   show: boolean;
   back: boolean;
   selectedNotification: string;
+  errorNotification: string;
+  message: string;
 
   constructor(
     private notificationService: NotificationService,
-    private sweetAlertService: SweetAlertService,
     private router: Router
   ) {
     this.notifications = [];
@@ -52,22 +52,22 @@ export class BellNotificationComponent implements OnInit {
 
         setTimeout(() => {
           this.selectedNotification = null;
+          this.errorNotification = null;
+          this.message = null;
           this.notifications = resp;
         }, 600);
       } else {
         this.notifications = resp;
       }
-    }, (error) => {
-
-    });
+    }, (error) => { });
   }
 
   setNotificationSee(notificationUid: string): void {
     this.notificationService.setNotificationSee(notificationUid).subscribe(resp => {
       this.getNotification(true, resp.uid);
-    }, (error) => {
-      this.selectedNotification = null;
-      this.sweetAlertService.errorAlert("");
+    }, ({ error }) => {
+      this.errorNotification = notificationUid;
+      this.message = error.message;
     });
   }
 
