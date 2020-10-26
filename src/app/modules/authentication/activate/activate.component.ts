@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../../core/http/authentication.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { errorAlert, successAlert } from '../../../core/functions/swal.function';
+import { SweetAlertService } from '../../../core/services/sweet-alert.service';
 
 @Component({
   selector: 'app-activate',
@@ -20,7 +20,8 @@ export class ActivateComponent {
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
     private activatedRoute: ActivatedRoute,
-    private route: Router
+    private route: Router,
+    private sweetAlertService: SweetAlertService
   ) {
     this.load = false;
     this.hide = true;
@@ -40,12 +41,12 @@ export class ActivateComponent {
     }).subscribe(
       (resp) => {
         this.load = false;
-        successAlert(resp.message).then(() => {
+        this.sweetAlertService.successAlert(resp.message).then(() => {
           this.route.navigate(['/'])
         });
       }, ({ error }) => {
         this.load = false;
-        errorAlert(error.message);
+        this.sweetAlertService.errorAlert(error.message);
       }
     )
   }

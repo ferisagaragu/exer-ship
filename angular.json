@@ -31,10 +31,7 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
-            "scripts": [
-              "src/assets/js/sockjs.min.js",
-              "src/assets/js/stomp.min.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../../core/http/authentication.service';
 import { UserModel } from '../../../core/model/user.model';
 import { Router } from '@angular/router';
-import { errorAlert, successAlert } from '../../../core/functions/swal.function';
+import { SweetAlertService } from '../../../core/services/sweet-alert.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -18,7 +18,8 @@ export class SignUpComponent {
   constructor(
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private sweetAlertService: SweetAlertService
   ) {
     this.load = false;
     this.createForm();
@@ -33,12 +34,12 @@ export class SignUpComponent {
     this.authenticationService.singUp(new UserModel(this.form.value)).subscribe(
       (resp) => {
         this.load = false;
-        successAlert(resp.message).then(() => {
+        this.sweetAlertService.successAlert(resp.message).then(() => {
           this.router.navigate(['/']);
         });
       }, ({ error }) => {
         this.load = false;
-        errorAlert(error.message);
+        this.sweetAlertService.errorAlert(error.message);
       }
     )
   }

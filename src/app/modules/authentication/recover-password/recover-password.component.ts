@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../../core/http/authentication.service';
 import { Router } from '@angular/router';
-import { errorAlert, successAlert } from '../../../core/functions/swal.function';
+import { SweetAlertService } from '../../../core/services/sweet-alert.service';
 
 @Component({
   selector: 'app-recover-password',
@@ -17,7 +17,8 @@ export class RecoverPasswordComponent {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private sweetAlertService: SweetAlertService
   ) {
     this.load = false;
     this.createForm();
@@ -32,12 +33,12 @@ export class RecoverPasswordComponent {
     this.authenticationService.recoverPassword(this.form.value).subscribe(
       (resp: any) => {
         this.load = false;
-        successAlert(resp.message).then(() => {
+        this.sweetAlertService.successAlert(resp.message).then(() => {
           this.router.navigate(['/']);
         });
       }, (error) => {
         this.load = false;
-        errorAlert(error.message);
+        this.sweetAlertService.errorAlert(error.message);
       }
     );
   }

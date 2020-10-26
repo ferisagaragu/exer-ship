@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://192.168.0.29:5000',
-  baseWs: 'http://192.168.0.29:5000/ws',
+  baseUrl: 'http://10.244.192.47:5000',
   expiration: null,
   expirationDate: null,
   user: null,

@@ -1,0 +1,100 @@
+<em
+  [matBadge]="convertNotificationNumber() === '0' ? null : convertNotificationNumber()"
+  matTooltip="Notificaciones"
+  class="mdi mdi-bell notification"
+  [class.mdi-bell-ring]="notifications.length != 0"
+  (click)="show = !show"
+></em>
+
+<div
+  *ngIf="show"
+  class="animate__animated shadow-nav"
+  [class.animate__fadeIn]="show"
+  [class.animate__fadeOut]="back"
+  (click)="close()"
+></div>
+
+<nav
+  class="animate__animated"
+  *ngIf="show"
+  [class.animate__slideInRight]="show"
+  [class.animate__slideOutRight]="back"
+>
+  <div class="text-left header row">
+    <div class="col-2">
+      <button
+        class="close-notification-button"
+        (click)="close()"
+      >
+        <em class="mdi mdi-close"></em>
+      </button>
+    </div>
+
+    <div class="col-10 text-center title">
+      <h2>Notificaciones</h2>
+    </div>
+  </div>
+
+  <div class="notification-list scroll">
+    <mat-card
+      class="m-3 animate__animated animate__fadeIn"
+      *ngIf="notifications.length === 0"
+    >
+      <div class="text-center">
+        <strong>No hay notificaciones para mostrar</strong>
+      </div>
+    </mat-card>
+
+    <mat-card
+      class="m-3 animate__animated"
+      *ngFor="let notification of notifications"
+      [class.animate__bounceOutRight]="selectedNotification === notification.uid"
+      [class.animate__animate__fadeIn]="selectedNotification !== notification.uid"
+    >
+      <div class="row">
+        <div
+          class="col-9 title"
+          [class.title-success]="notification.type === 'success'"
+          [class.title-error]="notification.type === 'error'"
+          [class.title-info]="notification.type === 'info'"
+          [class.title-warn]="notification.type === 'warning'"
+        >
+          <strong>{{ notification.title }}</strong>
+        </div>
+
+        <div class="col-3 text-right remove-section">
+          <button
+            class="remove-button"
+            mat-button
+            (click)="setNotificationSee(notification.uid)"
+            [disabled]="selectedNotification"
+          >
+            <em *ngIf="selectedNotification !== notification.uid" class="mdi mdi-close"></em>
+            <em *ngIf="selectedNotification === notification.uid" class="mdi mdi-loading mdi-spin"></em>
+          </button>
+        </div>
+
+        <div class="col-12 mb-2">
+          <small>
+            <strong>{{ notification.createDate | date }}</strong>
+          </small>
+        </div>
+
+        <div class="col-12">
+          {{ notification.message }}
+        </div>
+
+        <div *ngIf="notification.go" class="col-12 mt-3">
+          <button
+            mat-stroked-button
+            color="primary"
+            class="go-button"
+            (click)="goTo(notification.uid, '/pedro')"
+          >
+            Ir
+          </button>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</nav>

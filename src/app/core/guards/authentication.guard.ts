@@ -4,7 +4,7 @@ import { Observable, Subscriber } from 'rxjs';
 import { AuthenticationService } from '../http/authentication.service';
 import { environment } from '../../../environments/environment';
 import { cleanSessionEnvironment, getDataAccess, refreshToken, setTokenSessionEnvironment } from '../functions/global.function';
-import { SocketService } from '../http/socket.service';
+import { NotificationService } from '../http/notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class AuthenticationGuard implements CanActivate {
 
   constructor(
     private authenticationService: AuthenticationService,
-    private socketService: SocketService,
+    private notificationService: NotificationService,
     private router: Router
   ) { }
 
@@ -57,7 +57,7 @@ export class AuthenticationGuard implements CanActivate {
     observer.next(true);
     refreshToken(calculateExpire);
     this.authenticationService.isSignIn.next(true);
-    this.socketService.connect();
+    this.notificationService.connect();
   }
 
   returnAuthenticationFalse(observer: Subscriber<boolean>): void {
