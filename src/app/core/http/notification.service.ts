@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { NotificationModel } from '../model/notification.model';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { ResponseModel } from '../model/response.model';
 import { SweetAlertService } from '../services/sweet-alert.service';
 import * as firebase from "firebase/app";
 import "firebase/auth";

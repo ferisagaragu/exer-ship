@@ -30,19 +30,4 @@ export class MenuUserComponent {
     this.route.navigate(['/']);
   }
 
-  openNotifications(): void {
-    /*const dialogRef = this.dialog.open(DialogNotificationComponent, {
-      height: '400px',
-      width: '600px',
-      disableClose: true,
-      data: this.notifications
-    });
-
-    dialogRef.afterClosed().subscribe(notificationsUid => {
-      if (notificationsUid.length !== 0) {
-        this.setNotificationsSee(notificationsUid)
-      }
-    });*/
-  }
-
 }
